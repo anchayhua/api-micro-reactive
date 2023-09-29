@@ -23,7 +23,7 @@ FROM openjdk:17-alpine
 WORKDIR /app
 
 # Copia el archivo JAR construido desde la etapa de construcción al contenedor
-COPY --from=build /app/target/api-reactive-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/api-micro-reactive-0.0.1-SNAPSHOT.jar app.jar
 
 # Expone el puerto en el que tu aplicación Java escucha (ajusta el puerto según tu aplicación)
 EXPOSE 8080

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-reactive-deployment
+  name: api-micro-reactive-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: api-reactive
+      app: api-micro-reactive
   template:
     metadata:
       labels:
-        app: api-reactive
+        app: api-micro-reactive
     spec:
       containers:
-      - name: api-reactive
-        image: anchayhua/api-reactive
+      - name: api-micro-reactive
+        image: anchayhua/api-micro-reactive
         ports:
         - containerPort: 8080

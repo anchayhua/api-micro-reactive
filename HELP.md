@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.quique.api-reactive' is invalid and this project uses 'com.quique.apireactive' instead.
+* The original package name 'com.quique.api-micro-reactive' is invalid and this project uses 'com.quique.apireactive' instead.
 
 # Getting Started
 
