@@ -17,7 +17,7 @@
         <java.version>17</java.version>
 
         <sonar.host.url>http://localhost:9000</sonar.host.url>
-        <sonar.login>sqp_4c3a3b6ce8092c9e4ec29ed61aa16a7f746b810c</sonar.login>
+        <sonar.login>sqb_784f56315c39bdd1912944f390a2a50d1177913f</sonar.login>
         <sonar.projectKey>devops</sonar.projectKey>
         <sonar.projectName>devops</sonar.projectName>
     </properties>
