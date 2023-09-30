@@ -10,25 +10,31 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Usar Maven para construir el proyecto
-                sh 'mvn clean package'
+                sh 'mvn clean package' // Maven para construir el proyecto
             }
         }
 
         stage('Test') {
             steps {
-                // Ejecutar pruebas unitarias
-                sh 'mvn test'
+                sh 'mvn test' // Ejecuta pruebas unitarias
+            }
+        }
+
+        stage('Run SonarQube Analysis') {
+            steps {
+                sh './mvn test'
+            }
+        }
+
+        stage('Test kubectl') {
+            steps {
+                echo 'Solo falta la autenticacion en el K8s'
+                // sh 'kubectl version'
             }
         }
 
         stage('Deploy') {
             steps {
-                // Aquí puedes agregar comandos para implementar tu aplicación en el entorno de destino
-                // Por ejemplo, si estás implementando en un servidor de aplicaciones:
-                // sh 'scp target/your-application.jar user@your-server:/path/to/deployment/'
-                // ssh user@your-server 'sudo systemctl restart your-application'
-
                 echo 'La aplicación se ha desplegado correctamente.'
             }
         }
