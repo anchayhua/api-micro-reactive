@@ -38,7 +38,7 @@ pipeline {
             }
         }
 
-        stage('Buil, Login & Push Image Docker Hub') {
+        stage('Build, Login & Push Image Docker Hub') {
             steps {
                 sh 'docker build -t anchayhua/api-micro-reactive:latest .' // Construye la imagen Docker
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
@@ -48,16 +48,18 @@ pipeline {
 
         stage('Test kubectl') {
             steps {
-                echo 'Solo falta la autenticacion en el K8s'
-                // sh 'kubectl version'
+                echo 'Configurando contexto de Kubernetes'
+                sh 'kubectl config use-context minikube'
+                sh 'kubectl version'
             }
         }
 
-        // stage('Deploy') {
-        //     steps {
-        //         echo 'La aplicación se ha desplegado correctamente.'
-        //     }
-        // }
+        stage('Deploy to k8s') {
+            steps {
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
+            }
+        }
     }
 
     post {
