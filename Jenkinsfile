@@ -32,8 +32,8 @@ pipeline {
         stage('Run SonarQube Analysis') {
             steps {
                 sh 'mvn sonar:sonar \
-                        -Dsonar.projectKey=devops \
-                        -Dsonar.projectName=devops \
+                        -Dsonar.projectKey=api-micro-reactive \
+                        -Dsonar.projectName=api-micro-reactive \
                         -Dsonar.token=$SONAR_CREDENTIALS_PSW' // Analiza y prueba en sonar el proyecto
             }
         }
