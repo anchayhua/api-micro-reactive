@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-gateway-api-micro-reactive
+spec:
+  ingressClassName: nginx  # Reemplaza "nginx" con el nombre de la clase de Ingress que deseas utilizar
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-micro-reactive-service
+            port:
+              number: 8080

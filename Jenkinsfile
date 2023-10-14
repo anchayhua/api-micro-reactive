@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('jenkins-dockerhub')
-        SONAR_CREDENTIALS = credentials('devops')
+        SONAR_CREDENTIALS = credentials('api-micro-reactive')
     }
 
     stages {
@@ -38,13 +38,13 @@ pipeline {
             }
         }
 
-        stage('Build, Login & Push Image Docker Hub') {
-            steps {
-                sh 'docker build -t anchayhua/api-micro-reactive:latest .' // Construye la imagen Docker
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push anchayhua/api-micro-reactive' // Sube la imagen a un registro de Docker
-            }
-        }
+        // stage('Build, Login & Push Image Docker Hub') {
+        //     steps {
+        //         sh 'docker build -t anchayhua/api-micro-reactive:latest .' // Construye la imagen Docker
+        //         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        //         sh 'docker push anchayhua/api-micro-reactive' // Sube la imagen a un registro de Docker
+        //     }
+        // }
 
         stage('Test kubectl') {
             steps {
@@ -60,12 +60,18 @@ pipeline {
                 sh 'kubectl apply -f service.yaml'
             }
         }
+
+        stage('Deploy API Gateway') {
+            steps {
+                sh 'kubectl apply -f api-gateway.yaml'
+            }
+        }
     }
 
     post {
-        always {
-            sh 'docker logout'
-        }
+        // always {
+        //     sh 'docker logout'
+        // }
         success {
             // Acciones a realizar si el pipeline se ejecuta con éxito
             echo 'El pipeline se ha ejecutado con éxito.'
