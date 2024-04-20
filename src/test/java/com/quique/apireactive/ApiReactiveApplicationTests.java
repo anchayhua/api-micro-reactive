@@ -31,8 +31,8 @@ class ApiReactiveApplicationTests {
 
 	@Test
 	public void testGreet() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/greet"))
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/greet"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.content().string("Hello ncnr , Good day "));
+				.andExpect(MockMvcResultMatchers.content().string("Hello ncnr , Good day Reactive"));
 	}
 }

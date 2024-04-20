@@ -26,7 +26,7 @@ WORKDIR /app
 COPY --from=build /app/target/api-micro-reactive-0.0.1-SNAPSHOT.jar app.jar
 
 # Expone el puerto en el que tu aplicación Java escucha (ajusta el puerto según tu aplicación)
-EXPOSE 8080
+EXPOSE 8082
 
 # Comando para ejecutar la aplicación Java al iniciar el contenedor
 CMD ["java", "-jar", "app.jar"]
