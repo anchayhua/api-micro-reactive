@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('jenkins-dockerhub')
-        SONAR_CREDENTIALS = credentials('devops')
+        SONAR_CREDENTIALS = credentials('api-micro-reactive')
     }
 
     stages {
@@ -32,8 +32,8 @@ pipeline {
         stage('Run SonarQube Analysis') {
             steps {
                 sh 'mvn sonar:sonar \
-                        -Dsonar.projectKey=devops \
-                        -Dsonar.projectName=devops \
+                        -Dsonar.projectKey=api-micro-reactive \
+                        -Dsonar.projectName=api-micro-reactive \
                         -Dsonar.token=$SONAR_CREDENTIALS_PSW' // Analiza y prueba en sonar el proyecto
             }
         }
@@ -58,6 +58,12 @@ pipeline {
             steps {
                 sh 'kubectl apply -f deployment.yaml'
                 sh 'kubectl apply -f service.yaml'
+            }
+        }
+
+        stage('Deploy API Gateway') {
+            steps {
+                sh 'kubectl apply -f api-gateway.yaml'
             }
         }
     }

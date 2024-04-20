@@ -9,4 +9,4 @@ spec:
     - protocol: TCP
       port: 8080         # Puerto del servicio dentro del clúster
       targetPort: 8080   # Puerto en el contenedor del microservicio
-  type: ClusterIP         # Tipo de servicio (puede cambiar según tus necesidades)
+  type: NodePort         # Tipo de servicio (puede cambiar según tus necesidades)
