@@ -3,12 +3,14 @@ package com.quique.apireactive;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 
 @RestController
+@RequestMapping("/api")
 public class MyTestController {
 
     @GetMapping("/demo")
@@ -55,7 +57,7 @@ public class MyTestController {
     }
 
     private String getGreetingFromMs() {
-        return "Good day ";
+        return "Good day Reactive";
         //return restTemplate.getForEntity("http://localhost:6060/getGreeting", String.class).getBody();
     }
 }
