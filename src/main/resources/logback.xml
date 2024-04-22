@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-  <property name="log.folder" value="${user.home}/Archives/Software/elk/logz" />
+  <!-- <property name="log.folder" value="${user.home}/Archives/Software/elk/logz" /> -->
+  <!-- sudo mkdir -p /var/log/devops
+  sudo chmod -R 777 /var/log/devops -->
+
+  <property name="log.folder" value="/var/log/devops" />
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
