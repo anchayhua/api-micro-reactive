@@ -191,6 +191,7 @@ build/
 bin
 build
 target
+log
 dependency-reduced-pom.xml
 *.sublime-*
 /scratch
